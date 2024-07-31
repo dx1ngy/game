@@ -1,5 +1,7 @@
 package com.dx1ngy.game.external;
 
+import com.iohao.game.action.skeleton.core.IoGameGlobalSetting;
+import com.iohao.game.action.skeleton.core.codec.JsonDataCodec;
 import com.iohao.game.bolt.broker.core.client.BrokerAddress;
 import com.iohao.game.bolt.broker.core.common.IoGameGlobalConfig;
 import com.iohao.game.external.core.ExternalServer;
@@ -9,6 +11,9 @@ import com.iohao.game.external.core.netty.DefaultExternalServer;
 
 public class GameExternalMain {
     public static void main(String[] args) {
+        IoGameGlobalSetting.setDataCodec(new JsonDataCodec());
+        IoGameGlobalConfig.openTraceId = true;
+
         int externalCorePort = 10100;
         // 创建游戏对外服构建器
         var builder = DefaultExternalServer

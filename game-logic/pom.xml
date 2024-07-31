@@ -20,6 +20,10 @@
             <groupId>com.dx1ngy</groupId>
             <artifactId>game-proto</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

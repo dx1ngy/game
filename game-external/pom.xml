@@ -16,6 +16,10 @@
             <groupId>com.iohao.game</groupId>
             <artifactId>external-netty</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
