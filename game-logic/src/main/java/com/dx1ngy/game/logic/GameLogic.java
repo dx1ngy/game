@@ -5,6 +5,7 @@ import com.iohao.game.action.skeleton.core.BarSkeleton;
 import com.iohao.game.action.skeleton.core.BarSkeletonBuilder;
 import com.iohao.game.action.skeleton.core.BarSkeletonBuilderParamConfig;
 import com.iohao.game.action.skeleton.core.flow.internal.DebugInOut;
+import com.iohao.game.action.skeleton.core.flow.internal.TraceIdInOut;
 import com.iohao.game.bolt.broker.client.AbstractBrokerClientStartup;
 import com.iohao.game.bolt.broker.core.client.BrokerAddress;
 import com.iohao.game.bolt.broker.core.client.BrokerClient;
@@ -21,9 +22,10 @@ public class GameLogic extends AbstractBrokerClientStartup {
 
         // 业务框架构建器
         BarSkeletonBuilder builder = config.createBuilder();
+        // 全链路调用日志跟踪插件，将插件添加到业务框架中
+        builder.addInOut(new TraceIdInOut());
         // 添加控制台输出插件
         builder.addInOut(new DebugInOut());
-
         return builder.build();
     }
 
