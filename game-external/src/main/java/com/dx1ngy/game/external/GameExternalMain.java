@@ -4,15 +4,19 @@ import com.iohao.game.action.skeleton.core.IoGameGlobalSetting;
 import com.iohao.game.action.skeleton.core.codec.JsonDataCodec;
 import com.iohao.game.bolt.broker.core.client.BrokerAddress;
 import com.iohao.game.bolt.broker.core.common.IoGameGlobalConfig;
+import com.iohao.game.common.kit.trace.TraceKit;
 import com.iohao.game.external.core.ExternalServer;
 import com.iohao.game.external.core.config.ExternalJoinEnum;
 import com.iohao.game.external.core.netty.DefaultExternalCoreSetting;
 import com.iohao.game.external.core.netty.DefaultExternalServer;
 
+import java.util.UUID;
+
 public class GameExternalMain {
     public static void main(String[] args) {
         IoGameGlobalSetting.setDataCodec(new JsonDataCodec());
         IoGameGlobalConfig.openTraceId = true;
+        TraceKit.setDefaultTraceIdSupplier(() -> UUID.randomUUID().toString());
 
         int externalCorePort = 10100;
         // 创建游戏对外服构建器
