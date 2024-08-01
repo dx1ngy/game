@@ -7,6 +7,7 @@ import com.iohao.game.bolt.broker.core.common.IoGameGlobalConfig;
 import com.iohao.game.common.kit.trace.TraceKit;
 import com.iohao.game.external.core.ExternalServer;
 import com.iohao.game.external.core.config.ExternalJoinEnum;
+import com.iohao.game.external.core.hook.internal.DefaultUserHook;
 import com.iohao.game.external.core.netty.DefaultExternalCoreSetting;
 import com.iohao.game.external.core.netty.DefaultExternalServer;
 
@@ -30,6 +31,14 @@ public class GameExternalMain {
 
         // 得到 setting 对象（开发者可根据自身业务做扩展）
         DefaultExternalCoreSetting setting = builder.setting();
+        //用户上下线钩子
+        setting.setUserHook(new DefaultUserHook());
+        //心跳
+//        IdleProcessSetting idleProcessSetting = new IdleProcessSetting();
+//        idleProcessSetting.setIdleTime(300)
+//                .setIdleHook(new DefaultSocketIdleHook());
+//
+//        setting.setIdleProcessSetting(idleProcessSetting);
 
         // 构建、启动
         ExternalServer externalServer = builder.build();
