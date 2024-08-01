@@ -1,5 +1,7 @@
 package com.dx1ngy.game.client;
 
+import com.iohao.game.action.skeleton.core.IoGameGlobalSetting;
+import com.iohao.game.action.skeleton.core.codec.JsonDataCodec;
 import com.iohao.game.external.client.InputCommandRegion;
 import com.iohao.game.external.client.join.ClientRunOne;
 import com.iohao.game.external.client.kit.ClientUserConfigs;
@@ -10,6 +12,8 @@ public class GameClient {
     public static void main(String[] args) {
         // 关闭模拟请求相关日志
         ClientUserConfigs.closeLog();
+
+        IoGameGlobalSetting.setDataCodec(new JsonDataCodec());
 
         // 模拟请求数据
         List<InputCommandRegion> inputCommandRegions = List.of(
