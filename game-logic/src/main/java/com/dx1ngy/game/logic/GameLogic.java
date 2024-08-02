@@ -11,7 +11,9 @@ import com.iohao.game.bolt.broker.core.client.BrokerAddress;
 import com.iohao.game.bolt.broker.core.client.BrokerClient;
 import com.iohao.game.bolt.broker.core.client.BrokerClientBuilder;
 import com.iohao.game.bolt.broker.core.common.IoGameGlobalConfig;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class GameLogic extends AbstractBrokerClientStartup {
     @Override
     public BarSkeleton createBarSkeleton() {
@@ -25,7 +27,11 @@ public class GameLogic extends AbstractBrokerClientStartup {
         // 全链路调用日志跟踪插件，将插件添加到业务框架中
         builder.addInOut(new TraceIdInOut());
         // 添加控制台输出插件
-        builder.addInOut(new DebugInOut());
+        DebugInOut debugInOut = new DebugInOut();
+        debugInOut.setPrintConsumer((message, flowContext) -> {
+            log.info("\n{}", message);
+        });
+        builder.addInOut(debugInOut);
         return builder.build();
     }
 

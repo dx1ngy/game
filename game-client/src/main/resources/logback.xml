@@ -11,15 +11,17 @@
     <property name="log.max.size" value="100MB"/> <!-- 日志文件大小,超过这个大小将被压缩 -->
 
     <!-- 彩色日志 -->
-    <property name="log.pattern"
-              value="%d{HH:mm:ss.SSS} %green([%thread]) [%X{ioGameTraceId}] %highlight(%-5level) %cyan(%logger{5}).%M\(%F:%L\) %m%n"/>
+    <property name="log.console.pattern"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %green([%thread]) [%X{ioGameTraceId}] %highlight(%-5level) %cyan(%logger{50}).%M\(%F:%L\) %m%n"/>
+    <property name="log.file.pattern"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{ioGameTraceId}] %-5level %logger{50}.%M\(%F:%L\) %m%n"/>
 
     <!--控制台输出 -->
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
             <!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{50}) - %highlight(%msg) %n</pattern>-->
-            <pattern>${log.pattern}</pattern>
+            <pattern>${log.console.pattern}</pattern>
             <charset>utf8</charset>
         </encoder>
     </appender>
@@ -38,7 +40,7 @@
         </rollingPolicy>
         <!-- 日志输出的文件的格式 -->
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] [%X{ioGameTraceId}] %logger{80}.%method:%L -%msg%n</pattern>
+            <pattern>${log.file.pattern}</pattern>
         </layout>
     </appender>
 
@@ -53,7 +55,7 @@
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] [%X{ioGameTraceId}] %logger{80}.%method:%L - %msg%n</pattern>
+            <pattern>${log.file.pattern}</pattern>
         </layout>
         <!-- 下面为配置只输出error级别的日志 -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">

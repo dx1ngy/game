@@ -16,6 +16,7 @@ import java.util.UUID;
 public class GameExternalMain {
     public static void main(String[] args) {
         IoGameGlobalSetting.setDataCodec(new JsonDataCodec());
+//        IoGameGlobalConfig.externalLog = true;
         IoGameGlobalConfig.openTraceId = true;
         TraceKit.setDefaultTraceIdSupplier(() -> UUID.randomUUID().toString());
 
