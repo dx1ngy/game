@@ -4,18 +4,17 @@ import com.iohao.game.action.skeleton.core.IoGameGlobalSetting;
 import com.iohao.game.action.skeleton.core.codec.JsonDataCodec;
 import com.iohao.game.bolt.broker.core.client.BrokerAddress;
 import com.iohao.game.bolt.broker.core.common.IoGameGlobalConfig;
-import com.iohao.game.common.kit.concurrent.TaskKit;
 import com.iohao.game.common.kit.trace.TraceKit;
 import com.iohao.game.external.core.ExternalServer;
 import com.iohao.game.external.core.config.ExternalJoinEnum;
 import com.iohao.game.external.core.hook.internal.DefaultUserHook;
 import com.iohao.game.external.core.netty.DefaultExternalCoreSetting;
 import com.iohao.game.external.core.netty.DefaultExternalServer;
-import com.iohao.game.external.core.session.UserSessions;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
+@Slf4j
 public class GameExternalMain {
     public static void main(String[] args) {
         IoGameGlobalSetting.setDataCodec(new JsonDataCodec());
@@ -43,15 +42,6 @@ public class GameExternalMain {
 //                .setIdleHook(new DefaultSocketIdleHook());
 //
 //        setting.setIdleProcessSetting(idleProcessSetting);
-        //获取userSessions
-        TaskKit.runInterval(() -> {
-            UserSessions<?, ?> userSessions = setting.getUserSessions();
-            userSessions.forEach(userSession -> {
-                long userId = userSession.getUserId();
-                System.out.println(userId);
-            });
-        }, 5, TimeUnit.SECONDS);
-
         // 构建、启动
         ExternalServer externalServer = builder.build();
         externalServer.startup();

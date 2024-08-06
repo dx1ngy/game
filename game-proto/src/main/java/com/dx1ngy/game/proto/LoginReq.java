@@ -10,6 +10,6 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PUBLIC)
 @ProtoFileMerge(fileName = "one.proto", filePackage = "pb.one")
 @ToString
-public class HelloReq {
-    String name;
+public class LoginReq {
+    long userId;
 }

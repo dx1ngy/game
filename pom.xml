@@ -53,6 +53,11 @@
                 <version>${ioGame.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.iohao.game</groupId>
+                <artifactId>light-game-room</artifactId>
+                <version>${ioGame.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>

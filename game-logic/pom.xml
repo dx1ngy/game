@@ -17,6 +17,10 @@
             <artifactId>bolt-client</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.iohao.game</groupId>
+            <artifactId>light-game-room</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.dx1ngy</groupId>
             <artifactId>game-proto</artifactId>
         </dependency>
