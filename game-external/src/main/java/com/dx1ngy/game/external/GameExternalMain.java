@@ -6,6 +6,7 @@ import com.iohao.game.bolt.broker.core.client.BrokerAddress;
 import com.iohao.game.bolt.broker.core.common.IoGameGlobalConfig;
 import com.iohao.game.common.kit.trace.TraceKit;
 import com.iohao.game.external.core.ExternalServer;
+import com.iohao.game.external.core.config.ExternalGlobalConfig;
 import com.iohao.game.external.core.config.ExternalJoinEnum;
 import com.iohao.game.external.core.hook.internal.DefaultUserHook;
 import com.iohao.game.external.core.netty.DefaultExternalCoreSetting;
@@ -18,8 +19,13 @@ import java.util.UUID;
 public class GameExternalMain {
     public static void main(String[] args) {
         IoGameGlobalSetting.setDataCodec(new JsonDataCodec());
-//        IoGameGlobalConfig.externalLog = true;
         IoGameGlobalConfig.openTraceId = true;
+        var accessAuthenticationHook = ExternalGlobalConfig.accessAuthenticationHook;
+        // 表示登录才能访问业务方法
+        accessAuthenticationHook.setVerifyIdentity(true);
+        // 添加不需要登录（身份验证）也能访问的业务方法 (action)
+        accessAuthenticationHook.addIgnoreAuthCmd(1, 0);
+
         TraceKit.setDefaultTraceIdSupplier(() -> UUID.randomUUID().toString());
 
         int externalCorePort = 10100;

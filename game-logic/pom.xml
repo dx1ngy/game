@@ -21,12 +21,12 @@
             <artifactId>light-game-room</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.dx1ngy</groupId>
-            <artifactId>game-proto</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dx1ngy</groupId>
+            <artifactId>game-proto</artifactId>
         </dependency>
     </dependencies>
 

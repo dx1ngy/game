@@ -8,6 +8,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public enum GameCode implements MsgExceptionInfo {
+    LOGIN_ERROR(100, "登录失败"),
     ;
 
     final int code;

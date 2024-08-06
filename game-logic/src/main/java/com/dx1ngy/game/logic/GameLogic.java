@@ -32,6 +32,7 @@ public class GameLogic extends AbstractBrokerClientStartup {
             log.info("\n{}", message);
         });
         builder.addInOut(debugInOut);
+        builder.getSetting().setValidator(true);
         return builder.build();
     }
 
