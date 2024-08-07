@@ -18,7 +18,7 @@ public class GameAction {
      * 登录
      *
      * @param req         登录请求
-     * @param flowContext
+     * @param flowContext 上下文
      * @return 登录响应
      */
     @ActionMethod(0)
@@ -43,7 +43,7 @@ public class GameAction {
     /**
      * 测试
      *
-     * @param flowContext
+     * @param flowContext 上下文
      */
     @ActionMethod(1)
     public void test(FlowContext flowContext) {
