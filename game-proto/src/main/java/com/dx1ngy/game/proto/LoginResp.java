@@ -6,10 +6,16 @@ import lombok.AccessLevel;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
+/**
+ * 登录响应
+ */
 @ProtobufClass
 @FieldDefaults(level = AccessLevel.PUBLIC)
 @ProtoFileMerge(fileName = "one.proto", filePackage = "pb.one")
 @ToString
 public class LoginResp {
+    /**
+     * 用户id
+     */
     long userId;
 }
