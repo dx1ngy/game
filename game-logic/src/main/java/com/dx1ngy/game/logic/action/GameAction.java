@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @ActionController(1)
 public class GameAction {
+
     @ActionMethod(0)
     public LoginResp login(LoginReq req, FlowContext flowContext) {
         if (flowContext.getUserId() > 0) {
@@ -30,5 +31,9 @@ public class GameAction {
         LoginResp resp = new LoginResp();
         resp.userId = req.userId;
         return resp;
+    }
+
+    @ActionMethod(1)
+    public void test(FlowContext flowContext) {
     }
 }

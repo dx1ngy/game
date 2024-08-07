@@ -21,6 +21,10 @@
             <artifactId>light-game-room</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.iohao.game</groupId>
+            <artifactId>light-timer-task</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
