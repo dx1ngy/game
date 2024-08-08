@@ -7,6 +7,7 @@ import com.iohao.game.bolt.broker.server.BrokerServerBuilder;
 public class GameBrokerMain {
     public static void main(String[] args) {
         // Broker Server （游戏网关服） 构建器
+        IoGameGlobalConfig.requestResponseLog = true;
         BrokerServerBuilder brokerServerBuilder = BrokerServer.newBuilder()
                 // broker （游戏网关）默认端口 10200
                 .port(IoGameGlobalConfig.brokerPort);

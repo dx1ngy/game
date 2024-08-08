@@ -20,6 +20,7 @@ public class GameExternalMain {
     public static void main(String[] args) {
         IoGameGlobalSetting.setDataCodec(new JsonDataCodec());
         IoGameGlobalConfig.openTraceId = true;
+        IoGameGlobalConfig.externalLog = true;
         var accessAuthenticationHook = ExternalGlobalConfig.accessAuthenticationHook;
         // 表示登录才能访问业务方法
         accessAuthenticationHook.setVerifyIdentity(true);

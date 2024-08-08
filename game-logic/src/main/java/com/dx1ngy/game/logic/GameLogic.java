@@ -31,7 +31,7 @@ public class GameLogic extends AbstractBrokerClientStartup {
         debugInOut.setPrintConsumer((message, flowContext) -> {
             log.info("\n{}", message);
         });
-        builder.addInOut(debugInOut);
+//        builder.addInOut(debugInOut);
         builder.getSetting().setValidator(true);
         return builder.build();
     }
@@ -39,6 +39,7 @@ public class GameLogic extends AbstractBrokerClientStartup {
     @Override
     public BrokerClientBuilder createBrokerClientBuilder() {
         return BrokerClient.newBuilder()
+                .id("logic-1")
                 .appName("游戏逻辑服");
     }
 
